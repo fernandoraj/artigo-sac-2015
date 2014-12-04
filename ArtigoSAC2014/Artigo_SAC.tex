@@ -385,10 +385,10 @@ Carvalho \textit{et al.} \cite{Carvalho2011} propôs aplicar uma Correlação
 Espaço-Temporal Multivariada para melhorar a precisão da predição em uma RSSF.
 No entanto, esse trabalho não reduz o consumo de energia da rede. Na verdade,
 ele ainda aumenta o consumo de energia da rede, em muitas situações. Em nosso
-trabalho, por meio de regressão linear múltipla com Agrupamento Fractal,
-conseguimos a redução do consumo de energia total da rede, obtendo resultados
-com um Erro Quadrático Médio (EQM) para a predição de dados (com relação aos
-dados coletados) ainda menor do que outras abordagens.
+trabalho, por meio de regressão linear múltipla com Agrupamento Fractal (ou {\it
+Fractal Clustering}), conseguimos a redução do consumo de energia total da rede,
+obtendo resultados com um Erro Quadrático Médio (EQM) para a predição de dados
+(com relação aos dados coletados) ainda menor do que outras abordagens.
 % Carvalho \textit{et al.} \cite{Carvalho2011} proposed applying Multivariate
 % Spatio-Temporal Correlation to improving prediction accuracy in a WSN. However,
 % that work does not reduce the energy consumption of the network. In fact, it
@@ -402,14 +402,14 @@ dados coletados) ainda menor do que outras abordagens.
 Barbará and Chen \cite{Barbara2000} propuseram um método, chamado {\it Fractal
 Clustering} (FC), para agrupar conjuntos de dados.
 Nesse trabalho, uma etapa de iniciação baseada na estratégia do vizinho mais
-próximo cria os clusters (agrupamentos) iniciais. Em seguida, ele implementa o
+próximo cria os {\it clusters} (agrupamentos) iniciais. Em seguida, ele implementa o
 algoritmo do passo incremental, que usa o cálculo do \textit{Fractal Dimension}
 com base na implementação do algoritmo de \textit{Box Counting}, chamado FD3
 \cite{Liebovitch1989}. Em nosso trabalho, uma versão estendida do método FC é
 proposta (BCWSN). No nosso caso, o sink usa medida de similaridade (ver Passo 2
 na Seção \ref{implementing-bcwsn}) na etapa de iniciação para formar grupos
-iniciais. Para manutenção de clusters, nós implementamos um algoritmo de Fractal
-Clustering “especial” (ver Passo 5 na Seção \ref{implementing-bcwsn}), que
+iniciais. Para manutenção de clusters, nós implementamos um algoritmo de {\it Fractal
+Clustering} “especial” (ver Passo 5 na Seção \ref{implementing-bcwsn}), que
 identifica se a leitura de dados recebidos pelo sink são apenas ``ruído'' ou, na
 verdade, eles representam ``novidades'', e evita um grande volume de mensagens
 para receber os dados lidos de todos os sensores nos mesmos clusters, uma vez
@@ -467,29 +467,27 @@ mensagens da rede.
 \section{Implementando Correlação Comportamental em RSSFs}
 \label{implementing-bcwsn}
 
-%\\PAREI AQUI!!
-
-
-A fim de construir uma configuração de cluster inicial, BCWSN implementa
-a ideia dissimilaridade de Medida, que é responsável pela correlação
-comportamental informática. Correlação comportamental pode variar no tempo,
-o que por sua vez pode impor modificação na configuração do cluster inicial.
-Por essa razão, BCWSN implementa o conceito de Fractal Clustering
-\cite{Barbara2000}. Em nossa proposta,uma rede de sensores consiste
-em um sink node (a.k.a. estação de base ou centro de fusão) e um conjunto
+A fim de construir uma configuração inicial de {\it clusters}, o BCWSN
+implementa a ideia de Medida de Similaridade, que é responsável pelo cálculo da
+Correlação Comportamental. A Correlação Comportamental pode variar no tempo, o
+que por sua vez pode implicar em modificação na configuração inicial dos {\it
+clusters}.
+Por essa razão, o BCWSN implementa o conceito de {\it Fractal Clustering}
+\cite{Barbara2000}. Em nossa proposta, uma rede de sensores consiste em um {\it
+sink node} (também conhecido como Estação-Base ou Centro de Fusão) e um conjunto
 de nós sensores dispersos em uma região.
-Assim, sempre que novos dados chegam ao sink, ele analisa-os através do método
-de diferença mínima para a Fractal Dimension (descrito abaixo) para
-identificar se esses dados são apenas ``ruído'' ou ``novidades''. 
-Se o valor de diferença mínima para Fractal Dimension(valor do MDFD)
-está acima um certo limite,($\sigma$) ou se um número máximo de ``ruído'' 
-para uma nó sensor dado é atingido. Então, ele irá acionará um processo de
-divisão do cluster. Caso contrário, se o valor de MDFD for superior a um 
-limiar de ruído($\tau$), a quantidade de ``ruído'' para o nó sensor é 
-incrementado. Caso contrário, o nó sensor(que enviou os ``novidades'')
-será mudou-se para o cluster escolhido, ou seja, aquele que tem uma pequena
-diferença em será transferido para o cluster escolhido, ou seja, aquele que
-tem uma menor diferença na dimensão fractal com a inclusão de novos dados.
+Assim, sempre que novos dados chegam ao {\it sink}, ele analisa-os através do
+método de Diferença Mínima de Dimensão Fractal (ou {\it MDFD}, da sigla em
+inglês, descrito abaixo) para identificar se esses dados são apenas ``ruído'' ou
+``novidades''.
+Se o valor de Diferença Mínima de Dimensão Fractal (valor do {\it MDFD}) está
+acima de um certo limite ($\sigma$) ou se um número máximo de ``ruídos'' para
+uma nó sensor dado é atingido, então ele irá acionar um processo de divisão do
+{\it cluster}. Caso contrário, se o valor do {\it MDFD} for superior a um limiar
+de ruído($\tau$), a quantidade de ``ruído'' para o nó sensor é incrementado.
+Caso contrário, o nó sensor (que enviou as ``novidades'') será realocado para o
+{\it cluster} escolhido, ou seja, aquele que tem a menor diferença na dimensão
+fractal com a inclusão de novos dados.
 % In order to build an initial cluster configuration, BCWSN implements the idea of
 % Similarity Measure, which is responsible for computing Behavioral Correlation.
 % Behavioral Correlation may vary in time, which can in turn impose modification
@@ -508,6 +506,9 @@ tem uma menor diferença na dimensão fractal com a inclusão de novos dados.
 % relocated to the chosen cluster, i.e., one that has a smaller difference in
 % Fractal Dimension with the inclusion of new data.
 \vspace*{-.3cm}
+
+%\\PAREI AQUI!!
+
 
 
 %\subsection{The BCWSN Mechanism}
