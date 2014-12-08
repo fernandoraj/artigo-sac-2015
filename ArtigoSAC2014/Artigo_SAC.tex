@@ -55,15 +55,15 @@ Agrupamento de sensores é uma estratégia eficaz para reduzir o número de
 mensagens sendo transmitidas em uma rede de sensores sem fio (RSSF) e assim,
 reduzir o consumo de energia. Este artigo apresenta uma nova abordagem para
 agrupamento de sensores em redes de sensores, chamado Correlação Comportamental
-em RSSF (BCWSN, da sigla em inglês), que se baseia no comportamento de dados
+em RSSF ({\it BCWSN}, da sigla em inglês), que se baseia no comportamento de dados
 recentes coletados pelos sensores. Em vez de usar a distância espacial entre os
-sensores, a abordagem proposta inicializa clusters usando os conceitos de
+sensores, a abordagem proposta inicializa {\it clusters} usando os conceitos de
 similaridade na magnitude e tendência de dados de sensoriamento.
-Para a manutenção dos clusters, o BCWSN implementa o conceito de Agrupamento
+Para a manutenção dos {\it clusters}, o {\it BCWSN} implementa o conceito de Agrupamento
 Fractal (ou Fractal Clustering) para encontrar, dinamicamente, a melhor forma
-para a configuração dos clusters. A fim de validar nossa abordagem, simulações
-foram realizandas sobre dados reais.
-Os resultados mostram que o BCWSN pode reduzir o número de mensagens injetadas
+para a configuração dos {\it clusters}. A fim de validar nossa abordagem, simulações
+foram realizadas sobre dados reais.
+Os resultados mostram que o {\it BCWSN} pode reduzir o número de mensagens injetadas
 na rede em até $94,80\%$ em relação a uma abordagem naive (sem agrupamento, sem
 predição e sem supressão) e até $57,24\%$ quando comparado com abordagens
 implementando correlação temporal, enquanto o Erro Quadrático Médio (EQM)
@@ -224,18 +224,18 @@ RSSF.
 Por isso, propomos uma nova abordagem para a detecção de correlação de dados
 entre os dados produzidos por uma RSSF, baseado no conceito de {\it correlação
 comportamental}. O principal objetivo da abordagem proposta, chamada {\it
-Correlação Comportamental em RSSF} (BCWSN), é identificar padrões similares de
+Correlação Comportamental em RSSF} ({\it BCWSN}), é identificar padrões similares de
 leituras de dados, a fim de agrupar os sensores dinamicamente, com o número
 mínimo de mensagens trocadas, mesmo quando os sensores estão geograficamente
 distantes uns dos outros. Neste sentido, propomos a utilização da noção de {\it
 Agrupamento Fractal} (ou {\it Fractal Clustering}) \cite{Barbara2000}, que pode
-fazer a manutenção dos clusters no sink exatamente quando ``novidades'' são
+fazer a manutenção dos {\it clusters} no sink exatamente quando ``novidades'' são
 recebidas, sem necessidade de mais leituras de dados de outros sensores do mesmo
 cluster.
 No entanto, {\it Agrupamento Fractal} é uma técnica de agrupamento incremental
 utilizando o cálculo da Dimensão Fractal, e, consequentemente, ela é incapaz de
 inicializar o agrupamento de sensores desde o início, requerendo uma formação
-inicial dos agrupamentos (ou clusters). Desta forma, a correlação comportamental
+inicial dos agrupamentos (ou {\it clusters}). Desta forma, a correlação comportamental
 é calculado inicialmente a partir de séries temporais de leituras de sensores,
 aplicando {\it Medidas de Similaridade}, semelhantes as encontradas em
 \cite{Liu2007}. Assim, a Correlação Comportamental é capaz de capturar a
@@ -266,7 +266,7 @@ similaridade na magnitude e na tendência nos dados obtidos.
 % approach for clustering sensors in WSNs, called Behavioral Correlation in WSN
 % (BCWSN). 
 
-A idéia é aplicar o BCWSN para inicialização (usando {\it Medidas de
+A idéia é aplicar o {\it BCWSN} para inicialização (usando {\it Medidas de
 Similaridade}) e manutenção (usando {\it Agrupamento Fractal}) da melhor
 configuração de agrupamentos em uma RSSF.
 % The idea is to apply BCWSN for initializing (using {\it Similarity Measure}) and
@@ -321,7 +321,7 @@ configuração de agrupamentos em uma RSSF.
 O restante deste documento está organizado da seguinte forma: a Seção 
 \ref{related-work} descreve trabalhos relacionados e delineia as diferenças
 entre o nosso método e métodos existentes. Na Seção \ref{implementing-bcwsn},
-o método de Correlação Comportamental em RSSF (BCWSN) proposto é apresentado e 
+o método de Correlação Comportamental em RSSF ({\it BCWSN}) proposto é apresentado e 
 discutido. Simulações com um protótipo em Sinalgo \cite{Sinalgo2007} executado
 com dados de sensores reais são apresentados e discutidos na Seção \ref{eval}.
 Finalmente, a Seção \ref{conclusion} conclui o artigo.
@@ -349,7 +349,7 @@ sensoriamento de cada nó são enviados na forma de uma série temporal para o
 sink. $2)$ Em seguida, o sink armazena todos os dados dos sensores e então
 calcula a medida de dissimilaridade para cada par de nós da rede. $3)$ Com as
 medidas calculadas e o limiar máximo de dissimilaridade (max\_dst), o sink
-divide os nós em clusters (agrupamentos). Para cada agrupamento, o sink faz
+divide os nós em {\it clusters} (agrupamentos). Para cada agrupamento, o sink faz
 simultaneamente, o agendamento equitativo – round robin - junto com a escolha
 aleatória de nós representativos, cujas leituras de dados servem como
 representativos para todo o agrupamento. Porém, esse trabalho não leva em conta
@@ -406,13 +406,13 @@ próximo cria os {\it clusters} (agrupamentos) iniciais. Em seguida, ele impleme
 algoritmo do passo incremental, que usa o cálculo do \textit{Fractal Dimension}
 com base na implementação do algoritmo de \textit{Box Counting}, chamado FD3
 \cite{Liebovitch1989}. Em nosso trabalho, uma versão estendida do método FC é
-proposta (BCWSN). No nosso caso, o sink usa medida de similaridade (ver Passo 2
+proposta ({\it BCWSN}). No nosso caso, o sink usa medida de similaridade (ver Passo 2
 na Seção \ref{implementing-bcwsn}) na etapa de iniciação para formar grupos
-iniciais. Para manutenção de clusters, nós implementamos um algoritmo de {\it Fractal
+iniciais. Para manutenção de {\it clusters}, nós implementamos um algoritmo de {\it Fractal
 Clustering} “especial” (ver Passo 5 na Seção \ref{implementing-bcwsn}), que
 identifica se a leitura de dados recebidos pelo sink são apenas ``ruído'' ou, na
 verdade, eles representam ``novidades'', e evita um grande volume de mensagens
-para receber os dados lidos de todos os sensores nos mesmos clusters, uma vez
+para receber os dados lidos de todos os sensores nos mesmos {\it clusters}, uma vez
 que o FC precisa apenas de novos dados ``reais'' para funcionar corretamente.
 % Barbar\'{a} and Chen \cite{Barbara2000} proposed a method, called {\it Fractal
 % Clustering} (FC), to cluster datasets. In that work, an initialization step
@@ -453,7 +453,7 @@ Além do mais, ele define e usa um modelo de predição de dados em rede para
 reduzir o número de mensagens injetadas na rede. Não obstante o acima exposto,
 ele não é capaz de agrupar os sensores baseados no comportamento dos dados dos
 sensores (ou ``padrão de dados de leitura''). Assim, em algumas situações, o
-BCWSN agrupa sensores de uma forma mais otimizada, reduzindo o tráfego de
+{\it BCWSN} agrupa sensores de uma forma mais otimizada, reduzindo o tráfego de
 mensagens da rede.
 % Adaga-P* \cite{MaiaACR2013} constructs sensor-field models which implicitly
 % implements spatial correlation to cluster sensors. Furthermore, it defines and
@@ -467,12 +467,12 @@ mensagens da rede.
 \section{Implementando Correlação Comportamental em RSSFs}
 \label{implementing-bcwsn}
 
-A fim de construir uma configuração inicial de {\it clusters}, o BCWSN
+A fim de construir uma configuração inicial de {\it clusters}, o {\it BCWSN}
 implementa a ideia de Medida de Similaridade, que é responsável pelo cálculo da
 Correlação Comportamental. A Correlação Comportamental pode variar no tempo, o
 que por sua vez pode implicar em modificação na configuração inicial dos {\it
 clusters}.
-Por essa razão, o BCWSN implementa o conceito de {\it Fractal Clustering}
+Por essa razão, o {\it BCWSN} implementa o conceito de {\it Fractal Clustering}
 \cite{Barbara2000}. Em nossa proposta, uma rede de sensores consiste em um {\it
 sink node} (também conhecido como Estação-Base ou Centro de Fusão) e um conjunto
 de nós sensores dispersos em uma região.
@@ -512,7 +512,7 @@ fractal com a inclusão de novos dados.
 
 
 %\subsection{The BCWSN Mechanism}
-BCWSN pode ser dividida em cinco etapas, como descrito a seguir. 
+{\it BCWSN} pode ser dividida em cinco etapas, como descrito a seguir. 
 % BCWSN can be divided into five steps as described next.
 \vspace*{-.3cm}
 
@@ -543,7 +543,7 @@ nó sink com todos os dados de leitura.
 %\subsubsection{Clustering Sensor Nodes}
 {\bf Step 2 - Clustering Sensor Nodes}
 %\label{clustering-sensors}
-Como mencionado anteriormente, os nós sensores mecanismo BCWSN aglomerados
+Como mencionado anteriormente, os nós sensores mecanismo {\it BCWSN} aglomerados
 por meio de Correlação Comportamental. \textit{Uma medida de similaridade} 
 (baseado em \cite{Liu2007}) é usado para calcular Correlação Comportamental. 
 Assim, sensores com padrão de leitura de dados semelhante para todos os 
@@ -606,18 +606,18 @@ s'_{i} = s'_{i} - s'_{i-1}$ e $1 < i \leq n$.
 \vspace*{-.5cm}
 
 Assim, os sensores que são magnitude-M e tendência-T semelhante para
-todos sentiram tipo de dados são agrupados no mesmo cluster (M e T definido
+todos sentiram tipo de dados são agrupados no mesmo {\it cluster} (M e T definido
 pelo perito da aplicação). Depois de todas as séries de tempo, todos os 
 sensores em uma RSSF foram processados durante a fase de aprendizagem,
-a configuração inicial dos clusters em RSSF é definida pelo sink.
+a configuração inicial dos {\it clusters} em RSSF é definida pelo sink.
 % Thus, sensors which are magnitude-M and trend-T similar for all sensed data type
 % are grouped in the same cluster (M and T defined by the application expert).
 % After all time series of all sensors in a WSN have been processed during the
 % learning phase, the initial WSN cluster configuration is defined by the sink.
 \vspace*{-.3cm}
 
-Uma vez que os sensores são inicialmente agrupados em clusters,
-o Cluster Head de cada cluster é definido pelo critério de nível de energia.
+Uma vez que os sensores são inicialmente agrupados em {\it clusters},
+o Cluster Head de cada {\it cluster} é definido pelo critério de nível de energia.
 Em outras palavras, para cada cluster, o Cluster Head é o nó com o mais alto
 nível de energia. No caso de nodos com o mesmo nível de energia, o nó com a
 distância mais curta para o sink node é escolhido.
@@ -631,7 +631,7 @@ distância mais curta para o sink node é escolhido.
 %\subsubsection{In-Network Data Prediction}
 {\bf Step 3 - In-Network Data Prediction}
 %\label{data-predict}
-A previsão em-rede implementada por BCWSN baseia-se na 
+A previsão em-rede implementada por {\it BCWSN} baseia-se na 
 seguinte equação de regressão linear, aplicado para cada sentiu tipo de dados:
 $\hat{S}(t) = a + bt$.
 O tempo $t$ é uma variável independente. $\hat{S}(t)$ representa o estimado 
@@ -731,8 +731,8 @@ para calcular novos coeficientes de regressão para esse cluster.
 {\bf Step 5 - Fractal Clustering}
 %\label{cluster-maintenance}
 Na abordagem proposta, o sink tem a capacidade de automaticamente e 
-autonomamente manter os clusters. A estratégia é a de manter o sensor 
-clusters de acordo com a Diferença Mínima de Dimensão Fractal (MDFD).
+autonomamente manter os {\it clusters}. A estratégia é a de manter o sensor 
+{\it clusters} de acordo com a Diferença Mínima de Dimensão Fractal (MDFD).
 % In the proposed approach, the sink has the ability to automatically and
 % autonomously maintain the clusters. The strategy is to maintain the sensor
 % clusters according to the Minimum Difference of Fractal Dimension (MDFD).
@@ -744,7 +744,7 @@ permite $S_{R}$ o sensor responsável de informar que `` novidades ''
 (ou seja, nova leitura - $ R_{nova}$) para o nó sink; permite que $C_i$  o
 seja $i-th$ sensor do cluster, formado por um CH e outros membros do cluster
 (0 ou mais sensores); deixe $D(C_i)$ os dados (dados do sensor) de 
-cluster $C_i$; deixa $D'(C_i)$ denotar os dados do cluster $C_i$ com
+{\it cluster} $C_i$; deixa $D'(C_i)$ denotar os dados do {\it cluster} $C_i$ com
 o novo leitura de dados $R_{new}$ (ou seja, $D'(C_i) = D(C_i) \cup R_{new}$) 
 e deixa $F_{d}(D(C_i))$ ser o valor de Dimensão Fractal dos dados de
 agrupamento $C_i$.
@@ -759,7 +759,7 @@ agrupamento $C_i$.
 \vspace*{-.3cm}
 
 Na fase de agrupamento nó sensor (Passo 2), a dimensão fractal é 
-calculados e armazenados para cada cluster inicial 
+calculados e armazenados para cada {\it cluster} inicial 
 ($F_{d}(D(C_i)), \forall i$). A idéia é descobrir qual cluster
 $C_{\hat{\imath}}$ a inclusão de novos dados do sensor $R_{new}$
 levará para produzir a menor mudança em sua Dimensão Fractal.
@@ -772,7 +772,7 @@ levará para produzir a menor mudança em sua Dimensão Fractal.
 
 A estratégia MDFDA é a seguinte: 
 sempre que o sink recebe ``novidades'', ou seja, os novos dados ($R_{nova}$),
-a partir de um CH em um cluster dado $C_j$, ele calcula que cluster $C_I$
+a partir de um CH em um {\it cluster} dado $C_j$, ele calcula que {\it cluster} $C_I$
 tem o mínimo \textit{impacto fractal} com a adição de novos dados, ou seja,
 o absoluto mínimo diferença entre o valor de dimensão fractal anterior
 (calculado antes recebe os novos dados) ($F_d(D(C_i))$) e um novo ($F_d(D'(C_i))$), where:
@@ -816,7 +816,7 @@ Por outro lado, se o agrupamento escolhido $C_I$ é os mesmos $C_j$ (ou seja
 $ i = j $), a pia vai apenas calcular os novos coeficientes ($a$ e $b$, equações 
 (\ref {coef-a}) e (\ref {coef-b})) para o sensor correspondente neste agrupamento. 
 Caso contrário, a pia deve remover este nó sensor ($S_{R}$ com novos dados 
-$R_{nova}$) de seu antigo cluster $C_j$ e adicioná-lo ao novo cluster $(C_I)$.
+$R_{nova}$) de seu antigo {\it cluster} $C_j$ e adicioná-lo ao novo {\it cluster} $(C_I)$.
 O Algoritmo \ref{alg:MDFD} descreve essa estratégia.
 % On the other hand, if the chosen cluster $C_i$ is the same $C_j$ (i.e.
 % $i=j$), the sink will just calculate new coefficients ($a$ and $b$, equations
@@ -832,7 +832,7 @@ O Algoritmo \ref{alg:MDFD} descreve essa estratégia.
  \small
  \KwData{parâmetros de entrada: conjunto de todos os K grupos de sensores 
  de corrente (\{$C_i \vert 1 \leq i \leq K$\}), valores da Dimensão Fractal
- de todos os clusters de sensores  atuais ($F_d(D(C_i))$), nó sensor($S_{R}$)
+ de todos os {\it clusters} de sensores  atuais ($F_d(D(C_i))$), nó sensor($S_{R}$)
  com novos dados ($R_{new}$),limiar  de ruido ($\tau$), limiar de divisão
  ($\sigma$), máximo de ruídos sequencial ($\mu$)}
 %  \KwData{input parameters: set of all K current sensor clusters (\{$C_i \vert 1
@@ -841,7 +841,7 @@ O Algoritmo \ref{alg:MDFD} descreve essa estratégia.
 %  threshold ($\tau$), split threshold ($\sigma$), maximum sequential noise
 %  ($\mu$)}
  \KwResult{processes Fractal Clustering}
-  Nó Sink recebe novos dados ($R_{nova}$) do sensor ($S_{R}$) do cluster $C_j$\;
+  Nó Sink recebe novos dados ($R_{nova}$) do sensor ($S_{R}$) do {\it cluster} $C_j$\;
 %  Sink Node receives new data ($R_{new}$) from sensor ($S_{R}$) of cluster $C_j$\;
  \For{i = 1 \ldots K}{
 	  Compute $F_d(D(C_i))$\;
@@ -923,8 +923,8 @@ os seus detectada dados para o sink; {\ it
  (ii)} abordagem Adaga-P * \cite {MaiaACR2013}, que explora a 
 benefícios da utilização de um modelo de regressão linear para 
 reduzir o número de mensagens injectada na rede, e; {\ it 
- (iii)} abordagem BCWSN, que implementa correlação comportamental, com o 
- manutenção de clusters através do \textit{FC}.
+ (iii)} abordagem {\it BCWSN}, que implementa correlação comportamental, com o 
+ manutenção de {\it clusters} através do \textit{FC}.
 % The performance evaluation was done through different applications,
 % which was used to simulate and compare three approaches of a monitoring
 % application. This monitoring application simulates the gathering of two
@@ -994,7 +994,7 @@ Diferença tolerável {\it(t)} &0.05 \\
 Atraso do sensor {\it(n)} &1 \\
 \hline
 % Cluster delay {\it(m)} &5 \\
-Atraso do cluster {\it(m)} &5 \\
+Atraso do {\it cluster} {\it(m)} &5 \\
 \hline
 % FC noise threshold ($\tau$) &0.03 \\
 FC noise threshold ($\tau$) &0.03 \\
@@ -1017,7 +1017,7 @@ Limiar máximo de ruídos do FC ($\mu$) &3 \\
 Em primeiro lugar, foi mostrado e analisado os resultados para
 {\it temperatura}. A Tabela \ref{tab:rmse} apresenta a média (AVG), desvio
 padrão (STD), máxima (MAX) e mínimo (MIN) valor de RMSE válido apenas para
-Adaga-P * e BCWSN considerando os primeiros 1000 ciclos. O RMSE é calculado 
+Adaga-P * e {\it BCWSN} considerando os primeiros 1000 ciclos. O RMSE é calculado 
 por referência de valores filtrados da abordagem naive.
 % At first, it will be shown and analyzed the results for {\it temperature}. Table
 % \ref{tab:rmse} presents the average (AVG), standard deviation (STD), maximum
@@ -1027,12 +1027,12 @@ por referência de valores filtrados da abordagem naive.
 \vspace*{-.3cm}
 
 Olhando com mais cuidado as Tabelas \ref{tab:rmse} e \ref{tab:num-msg},
-pode-se observar BCWSN que apresenta um RMSE com média $0.443$ e desvio padrão 
-$0.1028$. RMSE produzido por BCWSN é $6.3\%$ mais elevada em média do 
+pode-se observar {\it BCWSN} que apresenta um RMSE com média $0.443$ e desvio padrão 
+$0.1028$. RMSE produzido por {\it BCWSN} é $6.3\%$ mais elevada em média do 
 que RMSE apresentado por Adaga-P *. Porém, a média do número de mensagens
-transmitidas em BCWSN é de $94.80\%$ menor do que a abordagem Naive 
+transmitidas em {\it BCWSN} é de $94.80\%$ menor do que a abordagem Naive 
 (ver Tabela  \ref{tab:num-msg}). Comparado com Adaga-P *, a média de mensagens
-trocadas em BCWSN é de $57.24\%$ inferior.
+trocadas em {\it BCWSN} é de $57.24\%$ inferior.
 % Looking more carefully to Tables \ref{tab:rmse} and \ref{tab:num-msg}, it can be
 % observed that BCWSN presents a RMSE with average $0.443$ and standard deviation
 % $0.1028$. RMSE produced by BCWSN is $6.3\%$ higher in average than RMSE
@@ -1054,7 +1054,7 @@ RMSE &AVG &STD &MAX &MIN \\
 \hline\hline
 Adaga-P* &0.4168 &0.0499 &0.469 &0 \\
 \hline
-BCWSN &0.443 &0.1028 &1.158 &0 \\
+{\it BCWSN} &0.443 &0.1028 &1.158 &0 \\
 \hline
 \end{tabular}
 \end{center}
@@ -1062,13 +1062,13 @@ BCWSN &0.443 &0.1028 &1.158 &0 \\
 \vspace*{-.3cm}
 
 É importante observar que na Tabela \ref{tab:num-msg}, os valores para coluna
-MIN para Adaga-P * e BCWSN são iguais a zero. Isso porque, em várias rodadas
+MIN para Adaga-P * e {\it BCWSN} são iguais a zero. Isso porque, em várias rodadas
 do previsto (ver Seção \ref{implementing-bcwsn}) o valor é igual ao valor
 coletado. Neste caso, o sensor não necessita transmitir o valor coletado.
 Em algumas situações, os nós aglomerados diferentes pode enviar mensagem 
 sábios para a sink (através dos seus Cluster Head), porque mudanças
 estão ocorrendo no ambiente onde estão coletando os dados. Por isse motivo,
-o desvio padrão do número de mensagem BCWSN é maior do que no Adaga-P * 
+o desvio padrão do número de mensagem {\it BCWSN} é maior do que no Adaga-P * 
 (Tabela \ref{tab:num-msg}).
 % It is important to observe that in Table \ref{tab:num-msg}, the values for
 % column MIN for Adaga-P* and BCWSN are equal to zero. This is because in several
@@ -1095,7 +1095,7 @@ Naive &224 &0 &224 &224 \\
 \hline
 Adaga-P* &27.257 &24.8360 &198 &0 \\
 \hline
-BCWSN &11.654 &49.5202 &607 &0 \\
+{\it BCWSN} &11.654 &49.5202 &607 &0 \\
 \hline
 \end{tabular}
 \end{center}
@@ -1104,8 +1104,8 @@ BCWSN &11.654 &49.5202 &607 &0 \\
 
 A Figura \ref{fig:rmse} representa RMSE por rodada. O RMSE em Adaga-P * 
 abordagem tende a ficar muito perto de $0.47$ a cerca de $1000$ ciclos,
-ao passo que o BCWSN estabiliza em cerca $00.39$, no mesmo momento.
-Assim, BCWSN fornece um compromisso eficiente entre precisão e redução
+ao passo que o {\it BCWSN} estabiliza em cerca $0.39$, no mesmo momento.
+Assim, {\it BCWSN} fornece um compromisso eficiente entre precisão e redução
 de gasto de energia, uma vez que reduz a atividade de comunicação
 (ver Tabela \ref{tab:num-msg}). É importante notar que, no Naive 
 o RMSE é sempre 0 (zero), porque todos os sensores enviam todos os dados
@@ -1131,9 +1131,9 @@ de sensoriamento para a sink.
 \vspace*{-.3cm}
 
 Na Figura \ref{fig:rmse}, ele pode ser identificado uma pico na curva para o
-BCWSN. A razão para isto é o fato de que o primeiro Cluster formado ter
+{\it BCWSN}. A razão para isto é o fato de que o primeiro Cluster formado ter
 é apenas uma etapa da inicialização para esta abordagem. Assim, a precisão 
-BCWSN é comprometida no início. No entanto, a abordagem BCWSN é capaz de 
+{\it BCWSN} é comprometida no início. No entanto, a abordagem {\it BCWSN} é capaz de 
 dinamicamente ajustar precisão através da redução do RMSE, através da 
 utilização do Fractal Clustering (FC).
 % In Figure \ref{fig:rmse}, it can be identified a peak for the BCWSN curve. The
@@ -1146,10 +1146,10 @@ utilização do Fractal Clustering (FC).
 A Figura \ref{fig:num-msg} mostra o número de mensagens transmitidas por round.
 Na abordagem Naive, o número de mensagens está constante, uma vez que
 em cada rodada todos os sensores enviam dados coletados para a sink. 
-No entanto, existem alguns picos na curva do BCWSN, as quais representam
-períodos de tempo em que os clusters estão sendo reestruturadas 
-(splitting or merging). {Lembrando que BCWSN dinamicamente atualiza a
-configuração do clusters .}Essa característica de a abordagem proposta
+No entanto, existem alguns picos na curva do {\it BCWSN}, as quais representam
+períodos de tempo em que os {\it clusters} estão sendo reestruturadas 
+(splitting or merging). {Lembrando que {\it BCWSN} dinamicamente atualiza a
+configuração do {\it clusters} .}Essa característica de a abordagem proposta
 é responsável pelo alto padrão desvio na Tabela \ref{tab:num-msg}.
 % Figure \ref{fig:num-msg} depicts the number of transmitted messages per round.
 % In the Naive approach, the number of messages is constant, since in each round
@@ -1174,7 +1174,7 @@ configuração do clusters .}Essa característica de a abordagem proposta
 
 
 Na Figura \ref{fig:tot-num-msg}, o número total de mensagens enviadas pelos
-sensores em BCWSN é muito menor em comparação com Adaga-P *,
+sensores em {\it BCWSN} é muito menor em comparação com Adaga-P *,
 { apesar de a grande variação no número de mensagens enviadas por rodada no
 anterior (Figure \ref{fig:num-msg}).} 
 % In Figure \ref{fig:tot-num-msg}, the total number of messages sent by sensors in
@@ -1183,9 +1183,9 @@ anterior (Figure \ref{fig:num-msg}).}
 %{} = CanBeRemoved
 \vspace*{-.3cm}
 
-A Figura \ref{fig:num-clts} mostra a variação do número de clusters
-a partir do BCWSN, que demonstra como a nossa proposta é capaz de se
-adaptar a alterações no ambiente, assim mudando o clusters para refletir
+A Figura \ref{fig:num-clts} mostra a variação do número de {\it clusters}
+a partir do {\it BCWSN}, que demonstra como a nossa proposta é capaz de se
+adaptar a alterações no ambiente, assim mudando o {\it clusters} para refletir
 essas mudanças.
 % Figure \ref{fig:num-clts} shows the variation in the number of clusters from
 % BCWSN that demonstrates how our proposal is able to adapt to changes in the
@@ -1208,7 +1208,7 @@ essas mudanças.
 \begin{center}
 	\includegraphics[scale=0.32]{BCWSN-NumClustersxRound-PB.png}
 	 \vspace*{-.6cm}
-	\caption{Número de clusters por rodada – Temperatura}
+	\caption{Número de {\it clusters} por rodada – Temperatura}
 %     \caption{Number of clusters per round - Temperature}
     \label{fig:num-clts}
 \end{center}
@@ -1232,7 +1232,7 @@ abordagem proposta com outro sentiu tipo de dados.
 \end{figure}
 % \vspace*{-.3cm}
 
-A Figura \ref{fig:rmse-hum} mostra que, para a umidade, RMSE de BCWSN 
+A Figura \ref{fig:rmse-hum} mostra que, para a umidade, RMSE de {\it BCWSN} 
 começa maior do que Adaga-P *. No entanto, a partir de um determinado ponto
 (Ronda 320) em diante, ele cai, e fica inferior ao RMSE do Adaga-P *.
 % Figure \ref{fig:rmse-hum} shows that, for humidity, BCWSN's RMSE starts higher
@@ -1241,7 +1241,7 @@ começa maior do que Adaga-P *. No entanto, a partir de um determinado ponto
 \vspace*{-.3cm}
 
 Na Figura \ref{fig:tot-num-msg-hum}, pode-se compreender que o número total das mensagens no caso
-de BCWSN é também menor do que a Adaga-P *. {Por uma questão de clareza,
+de {\it BCWSN} é também menor do que a Adaga-P *. {Por uma questão de clareza,
 não se incluiu a curva Naive para o número total de mensagens, porque ele
 é muito alto w.r.t. as outras duas abordagens.}
 % In Figure \ref{fig:tot-num-msg-hum}, it can be realized that the total number of
@@ -1268,9 +1268,9 @@ não se incluiu a curva Naive para o número total de mensagens, porque ele
 
 Neste trabalho, foi descrita uma nova abordagem para o agrupamento
 de sensores em RSSFs com base na noção de Behavioral Correlation e Fractal
-Clustering. BCWSN identifica sensores com padrões de leitura 
+Clustering. {\it BCWSN} identifica sensores com padrões de leitura 
 de dados semelhantes, entre leituras de um ou mais (diferente) de tipos 
-de dados. Desde Behavioral Correlation pode variar no tempo, BCWSN ajusta
+de dados. Desde Behavioral Correlation pode variar no tempo, {\it BCWSN} ajusta
 dinamicamente a Behavioral Correlation a coleta de dados pelos nós sensores,
 utilizando Fractal Clustering.
 % In this paper, it was described a new approach for clustering sensors in WSNs
@@ -1282,13 +1282,13 @@ utilizando Fractal Clustering.
 \vspace*{-.3cm}
 
 Os resultados apresentados na Seção \ref{results-and-discussion} mostra 
-BCWSN pode diminuir significativamente o consumo de energia em redes de
+{\it BCWSN} pode diminuir significativamente o consumo de energia em redes de
 sensores, reduzindo o número total de mensagens transmitidas na rede (Figuras
 \ref{fig:tot-num-msg} e \ref{fig:tot-num-msg-hum}),garantindo ao mesmo
 tempo um baixo erro RMS. Os resultados apresentados nas tabelas \ref{tab:rmse} 
 e \ref{tab:num-msg} mostra esta afirmação, uma vez que o consumo de 
 energia (para o envio de mensagens) na Adaga-P * foi de $2.33$ vezes maior do
-que a energia consumida  para executar BCWSN para recolha de temperatura 
+que a energia consumida  para executar {\it BCWSN} para recolha de temperatura 
 (em $1000$ ciclos, com limiar de $5\%$), por uma diferença RMSE de $0.026$.
 % The results presented in Section \ref{results-and-discussion} show BCWSN may
 % significantly decrease energy consumption in WSNs, by reducing the total number
@@ -1300,7 +1300,7 @@ que a energia consumida  para executar BCWSN para recolha de temperatura
 % (in $1000$ cycles, with threshold of $5\%$), for a RMSE difference of $0.026$.
 \vspace*{-.6cm}
 
-Por fim, enfatizamos a aplicabilidade e a eficácia da BCWSN para uma variedade de aplicações que
+Por fim, enfatizamos a aplicabilidade e a eficácia da {\it BCWSN} para uma variedade de aplicações que
 consomem dados produzidos por redes de sensores.
 % Finally, we emphasize the applicability and the effectiveness of BCWSN for a
 % variety of applications which consume data produced by WSNs.
