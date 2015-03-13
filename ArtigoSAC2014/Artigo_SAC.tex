@@ -512,21 +512,23 @@ fractal com a inclusão de novos dados.
 
 
 %\subsection{The BCWSN Mechanism}
-{\it BCWSN} pode ser dividida em cinco etapas, como descrito a seguir. 
+{\it BCWSN} pode ser dividido em cinco passos, como descrito a seguir. 
 % BCWSN can be divided into five steps as described next.
 \vspace*{-.3cm}
 
 %\subsubsection{Learning Stage}
-{\bf Step 1 - Learning Stage}
+{\bf Passo 1 - Estágio de Aprendizagem}
 Nesta etapa, o nó sink coleta dados sensoriais de todos os sensores
-{pertencentes à rede}, a fim de calcular a formação do aglomerado inicial e os
-coeficientes da equação de regressão linear (ver Passo 3). Assim, o nó sorvedouro primeiramente envia uma mensagem de
-broadcast para todos os nós da rede, solicitando os seguintes dados de sensores: Nível da bateria,
-localização espacial e valores detectados. A quantidade de dados utilizados pela fase de
-aprendizagem é um parâmetro, denotada \textit{programação inicial}. A qual
-deverá ser definida por uma aplicação expert(Por exemplo 70). Cada sensor responde à mensagem de transmissão
-do sink, em lote, ou seja, faz todo sensoriamento necessário e envia apenas uma mensagem de resposta para o
-nó sink com todos os dados de leitura.
+{pertencentes à rede}, a fim de calcular a formação do {\it cluster} inicial e
+os coeficientes da equação de regressão linear (ver Passo 3). Assim, o nó
+sink primeiramente envia uma mensagem de broadcast para todos os nós da
+rede, solicitando os seguintes dados de sensores: Nível da bateria, localização
+espacial e valores detectados. A quantidade de dados utilizados pelo estágio de
+aprendizagem é um parâmetro, denotado \textit{initial slot time}, a qual
+deverá ser definida por um expert da aplicação (por exemplo, 70). Cada sensor
+responde à mensagem de transmissão do sink, em lote, ou seja, faz todo
+sensoriamento necessário e envia apenas uma mensagem de resposta para o nó sink
+com todos os dados de leitura.
 % In this step, the sink node collects sensed data from all sensors {belonging to
 % the network} in order to compute the initial cluster formation and the
 % coefficients of the linear regression equation (see Step 3). Thus, the sink 
@@ -541,14 +543,14 @@ nó sink com todos os dados de leitura.
 %{} = CanBeRemoved
 
 %\subsubsection{Clustering Sensor Nodes}
-{\bf Step 2 - Clustering Sensor Nodes}
+{\bf Passo 2 - Agrupamento de Nós Sensores}
 %\label{clustering-sensors}
-Como mencionado anteriormente, os nós sensores mecanismo {\it BCWSN} aglomerados
-por meio de Correlação Comportamental. \textit{Uma medida de similaridade} 
-(baseado em \cite{Liu2007}) é usado para calcular Correlação Comportamental. 
-Assim, sensores com padrão de leitura de dados semelhante para todos os 
-tipos de dados de sensoriamento são agrupados em um único cluster. 
-A medida de similaridade entre dados obtidos de dois diferentes sensores 
+Como mencionado anteriormente, o mecanismo {\it BCWSN} agrupa os nós sensores
+por meio de Correlação Comportamental. Uma \textit{medida de similaridade} 
+(baseada em \cite{Liu2007}) é usada para calcular a Correlação Comportamental. 
+Assim, sensores com padrões de leitura de dados semelhantes para todos os 
+tipos de dados de sensoriamento são agrupados em um único {\it cluster} (agrupamento). 
+A medida de similaridade entre dados obtidos de dois sensores diferentes 
 é definida pela similaridade de magnitude e similaridade de tendência como
 descritas a seguir.
 % As mentioned before, the BCWSN mechanism clusters sensor nodes by means of
@@ -562,9 +564,9 @@ descritas a seguir.
 \newtheorem{defini}{Definition}
 
 \begin{defini}
-Semelhança de magnitude-M: Dois sensores ($S$ e $S'$) com séries temporais
+Similaridade de magnitude-M: Dois sensores ($S$ e $S'$) com séries temporais
 $S$=\{$s_{1}$,$s_{2}$,\ldots,$s_{n}$\} e
-$S'$ = \{$s'_{1}$,$s'_{2}$,\ldots,$s'_{n}$\} é similar a Tendência-T se 
+$S'$ = \{$s'_{1}$,$s'_{2}$,\ldots,$s'_{n}$\} são M-magnitude similares se 
 % Similarity of magnitude-M: Two sensors ($S$ and $S'$) with time series
 % $S$=\{$s_{1}$,$s_{2}$,\ldots,$s_{n}$\} and
 % $S'$ = \{$s'_{1}$,$s'_{2}$,\ldots,$s'_{n}$\} are magnitude-M similar if 
@@ -580,7 +582,7 @@ $S'$ = \{$s'_{1}$,$s'_{2}$,\ldots,$s'_{n}$\} é similar a Tendência-T se
 
 Similaridade de tendência-T: Dois sensores ($S$ e $S'$) com séries temporais
 $S$=\{$s_{1}$,$s_{2}$,\ldots,$s_{n}$\} e
-$S'$=\{$s'_{1}$,$s'_{2}$,\ldots,$s'_{n}$\} é similar a Tendência-T se
+$S'$=\{$s'_{1}$,$s'_{2}$,\ldots,$s'_{n}$\} são T-Tendência similares  se
 \begin{equation}
 \label{equ:trend}
 \frac{P}{n} \geq T,
@@ -605,10 +607,10 @@ s'_{i} = s'_{i} - s'_{i-1}$ e $1 < i \leq n$.
 \end{defini}
 \vspace*{-.5cm}
 
-Assim, os sensores que são magnitude-M e tendência-T semelhante para
-todos sentiram tipo de dados são agrupados no mesmo {\it cluster} (M e T definido
-pelo perito da aplicação). Depois de todas as séries de tempo, todos os 
-sensores em uma RSSF foram processados durante a fase de aprendizagem,
+Assim, os sensores que são M-magnitude e T-tendência semelhantes para
+todos os tipo de dados lidos são agrupados no mesmo {\it cluster} (M e T definido
+pelo perito da aplicação). Depois que todas as séries temporais, de todos os 
+sensores em uma RSSF forem processadas durante o estágio de aprendizagem,
 a configuração inicial dos {\it clusters} em RSSF é definida pelo sink.
 % Thus, sensors which are magnitude-M and trend-T similar for all sensed data type
 % are grouped in the same cluster (M and T defined by the application expert).
@@ -619,7 +621,7 @@ a configuração inicial dos {\it clusters} em RSSF é definida pelo sink.
 Uma vez que os sensores são inicialmente agrupados em {\it clusters},
 o Cluster Head de cada {\it cluster} é definido pelo critério de nível de energia.
 Em outras palavras, para cada cluster, o Cluster Head é o nó com o mais alto
-nível de energia. No caso de nodos com o mesmo nível de energia, o nó com a
+nível de energia. No caso de nós com o mesmo nível de energia, o nó com a
 distância mais curta para o sink node é escolhido.
 % Once the sensors are initially grouped into clusters, the Cluster Head of each
 % cluster is defined by applying the energy level criterion.
@@ -629,14 +631,14 @@ distância mais curta para o sink node é escolhido.
 \vspace*{-.3cm}
 
 %\subsubsection{In-Network Data Prediction}
-{\bf Step 3 - In-Network Data Prediction}
+{\bf Passo 3 - Predição de Dados em Rede}
 %\label{data-predict}
-A previsão em-rede implementada por {\it BCWSN} baseia-se na 
-seguinte equação de regressão linear, aplicado para cada sentiu tipo de dados:
+A predição em rede implementada por {\it BCWSN} baseia-se na 
+seguinte equação de regressão linear, aplicada para cada tipo coletado de dados:
 $\hat{S}(t) = a + bt$.
-O tempo $t$ é uma variável independente. $\hat{S}(t)$ representa o estimado 
-valor de $S(t) $ e é variável com $ t $. Parâmetro $ a $ é o interceptor-t 
-(valor de $\hat{S}(t)$ para $t=0$) e $b$ é a inclinação trecho, e são calculados 
+O tempo $t$ é uma variável independente. $\hat{S}(t)$ representa o valor estimado 
+de $S(t) $ e é variável com $t$. O parâmetro $a$ é o interceptor em t 
+(valor de $\hat{S}(t)$ para $t=0$) e $b$ é o grau de inclinação, e são calculados 
 do seguinte modo:
 % The in-network prediction implemented by BCWSN relies on the
 % following linear regression equation, applied for each sensed data type:
@@ -656,12 +658,11 @@ do seguinte modo:
 \end{equation}
 	\dia
 \vspace*{-.4cm}
-A idéia por trás deste método é que tanto o sink e o nó sensor sabe as 
-equações de regressão para predizer os valores detectados para
-todos os dados de sensoriamento. Assim, uma nó sensor não necessita de
-enviar quaisquer dados para o sink, uma vez que é capaz de prever 
-todos os dados por sensores sentiu. Em seguida, a rede está economizando
-energia de sensores\cite{MaiaACR2013}.
+A idéia por trás deste método é que tanto o sink como o nó sensor sabem as
+equações de regressão para predizer os valores detectados para todos os dados de
+sensoriamento. Assim, um nó sensor não necessita enviar quaisquer dados para o
+sink, uma vez que é capaz de prever todos os dados lidos por sensores. Logo, a
+rede está economizando energia dos sensores\cite{MaiaACR2013}.
 % The idea behind this method is that both the sink and the sensor node know the
 % regression equations to predict the sensed values for all sensed data. Thus, a
 % sensor node does not need to send any data to sink, since it is able to predict
@@ -669,8 +670,8 @@ energia de sensores\cite{MaiaACR2013}.
 % \cite{MaiaACR2013}.
 \vspace*{-.3cm}
 Durante o estágio de aprendizagem, o nó sink calcula os coeficientes
-iniciais $a$ e $b$ detectado para cada tipo de dados, para cada nó sensor,
-com base na hora série recebeu a partir deles. Depois disso,
+iniciais $a$ e $b$ para cada tipo de dados lido, para cada nó sensor,
+com base na série temporal recebida a partir deles. Depois disso,
 o nó sink envia o coeficiente calculado para os respectivos sensores.
 % During the Learning Stage, the sink node computes the initial coefficients $a$
 % and $b$ for each sensed data type, for each sensor node, based on the time
@@ -679,25 +680,25 @@ o nó sink envia o coeficiente calculado para os respectivos sensores.
 \vspace*{-.3cm}
 
 %\subsubsection{Sensing}
-{\bf Step 4 - Sensing}
-Como mencionado anteriormente, um nó sensor (Cluster Head) em cada cluster
+{\bf Passo 4 - Coletando dados}
+Como mencionado anteriormente, um nó sensor (Cluster Head) em cada {\it cluster}
 $C_{i}$ é selecionado para coordenar a atividade de detecção de
-dados realizada por todos os nós $C_ {i}$.
+dados realizada por todos os nós em $C_ {i}$.
 % As mentioned before, one sensor node (Cluster Head) in each cluster $C_{i}$ is
 % selected to coordinate the data sensing activity carried out by all nodes in
 % $C_{i}$.
 \vspace*{-.3cm}
 
-Depois de um nó recebe os coeficientes correspondentes, ele começa a usar 
-estes coeficientes em loop de leitura / previsão. 
+Depois que um nó recebe os coeficientes correspondentes, ele começa a usar 
+estes coeficientes em loop de leitura / predição. 
 Sempre que um nó sensor detecta valores \{$v_{1}$,$v_{2}$, \ldots,$v_{n}$\} de 
 certo tipo de dados \{$d_{1}$,$d_{2}$,\ldots,$d_{n}$\}, ele verifica se 
-alguém de $v_{n}$ não é dentro de um ``diferença tolerável'' $t$, ou seja,
-$v_{n} \not \in [p_{n}-t,p_{n}+t], t \geq 0$, deixa $p_{n}$, seja $p_{n}$ 
-é o valor previsto pela aplicação a equação de regressão correspondente
-ao tipo de dados $d_{n}$. Qualquer dado fora da diferença tolerável são 
-tratados como ``novidade'' para o modelo. ``Diferença tolerável'' é um
-parâmetro, definido pelo perito aplicação (por exemplo, $5\%$ ou $10\%$).
+algum $v_{n}$ não está dentro de uma ``diferença tolerável'' $t$, ou seja,
+$v_{n} \not \in [p_{n}-t,p_{n}+t], t \geq 0$, seja $p_{n}$ 
+o valor previsto pela aplicação da equação de regressão correspondente
+ao tipo de dados $d_{n}$. Quaisquer valores fora da diferença tolerável são 
+tratados como ``novidades'' pelo modelo. ``Diferença tolerável'' é um
+parâmetro, definido pelo expert (por exemplo, $5\%$ ou $10\%$).
 % After a node receives the corresponding coefficients, it starts using these
 % coefficients in reading / prediction loop.
 % Whenever a sensor node senses values \{$v_{1}$,$v_{2}$, \ldots,$v_{n}$\} of
@@ -711,13 +712,13 @@ parâmetro, definido pelo perito aplicação (por exemplo, $5\%$ ou $10\%$).
 \vspace*{-.3cm}
 
 Sempre que um nó sensor $s$ detecta uma determinada quantidade de
-novidades $n$ (ou ``Demora do Sensor'', definido pelo perito aplicação),
-ele envia as novidades como um notificação ao Cluster Head do cluster
-para que $s$ pertence. Cluster Head, por sua vez regista o número de 
+novidades $n$ (ou ``Atraso do sensor'', definido pelo expert),
+ele envia as novidades como uma notificação ao Cluster Head do {\it cluster}
+ao qual $s$ pertence. O Cluster Head, por sua vez, regista o número de 
 notificações, de tal maneira que, quando o número de notificações recebidas
-é maior do que uma predefinição limite de $m$ (ou ``Demora do Cluster'',
-também definido pelo perito aplicação), o CH envia uma mensagem para o sink
-para calcular novos coeficientes de regressão para esse cluster.
+é maior do que um limite predefinido $m$ (ou ``Atraso do {\it cluster}'',
+também definido pelo expert), o Cluster Head envia uma mensagem para o sink
+para calcular novos coeficientes de regressão para esse {\it cluster}.
 % Whenever a sensor node $s$ detects a given amount of novelties $n$ (or ``Sensor
 % Delay'', defined by the application expert), it sends the novelties as a
 % notification to the Cluster Head of the cluster to which $s$ belongs. 
@@ -728,26 +729,26 @@ para calcular novos coeficientes de regressão para esse cluster.
 \vspace*{-.3cm}
 
 %\subsubsection{Fractal Clustering}
-{\bf Step 5 - Fractal Clustering}
+{\bf Passo 5 - Agrupamento Fractal}
 %\label{cluster-maintenance}
-Na abordagem proposta, o sink tem a capacidade de automaticamente e 
-autonomamente manter os {\it clusters}. A estratégia é a de manter o sensor 
-{\it clusters} de acordo com a Diferença Mínima de Dimensão Fractal (MDFD).
+Na abordagem proposta, o sink tem a capacidade de automaticamente e
+autonomamente manter os {\it clusters}. A estratégia é a de manter os
+agrupamentos de sensores de acordo com a Diferença Mínima de Dimensão Fractal
+({\it MDFD}).
 % In the proposed approach, the sink has the ability to automatically and
 % autonomously maintain the clusters. The strategy is to maintain the sensor
 % clusters according to the Minimum Difference of Fractal Dimension (MDFD).
 \vspace*{-.3cm}
 
-Considerando-se o Fractal Clustering (Algoritmo \ref {alg:MDFD}),
-permite $R_{nova}$ os novos dados de leitura a serem tratados pelo coletor;
-permite $S_{R}$ o sensor responsável de informar que `` novidades ''
-(ou seja, nova leitura - $ R_{nova}$) para o nó sink; permite que $C_i$  o
-seja $i-th$ sensor do cluster, formado por um CH e outros membros do cluster
-(0 ou mais sensores); deixe $D(C_i)$ os dados (dados do sensor) de 
-{\it cluster} $C_i$; deixa $D'(C_i)$ denotar os dados do {\it cluster} $C_i$ com
-o novo leitura de dados $R_{new}$ (ou seja, $D'(C_i) = D(C_i) \cup R_{new}$) 
-e deixa $F_{d}(D(C_i))$ ser o valor de Dimensão Fractal dos dados de
-agrupamento $C_i$.
+Considerando-se o Agrupamento Fractal (Algoritmo \ref {alg:MDFD}),
+seja $R_{new}$ os novos dados de leitura a serem tratados pelo sink;
+seja $S_{R}$ o sensor responsável por informar ``novidades''
+(ou seja, novas leituras - $R_{new}$) para o nó sink; seja $C_i$ o
+$i-th$ sensor do cluster, formado por um Cluster Head e outros membros do cluster
+(0 ou mais sensores); seja $D(C_i)$ os dados (dados do sensor) do 
+{\it cluster} $C_i$; seja $D'(C_i)$ os dados do {\it cluster} $C_i$ com
+os novos dados lidos $R_{new}$ (ou seja, $D'(C_i) = D(C_i) \cup R_{new}$) 
+e seja $F_{d}(D(C_i))$ o valor da Dimensão Fractal dos dados do {\it cluster} $C_i$.
 % Considering the Fractal Clustering (Algorithm \ref{alg:MDFD}), let $R_{new}$ be
 % the new reading data to be handled by the sink; let $S_{R}$ be the sensor
 % responsible to report that ``novelties'' (i.e. new reading - $R_{new}$) to the
@@ -758,11 +759,11 @@ agrupamento $C_i$.
 % $F_{d}(D(C_i))$ be he value of Fractal Dimension of the data of cluster $C_i$.
 \vspace*{-.3cm}
 
-Na fase de agrupamento nó sensor (Passo 2), a dimensão fractal é 
-calculados e armazenados para cada {\it cluster} inicial 
-($F_{d}(D(C_i)), \forall i$). A idéia é descobrir qual cluster
+Na fase de agrupamento de nós sensores (Passo 2), a dimensão fractal é 
+calculada e armazenada para cada {\it cluster} inicial 
+($F_{d}(D(C_i)), \forall i$). A idéia é descobrir em qual cluster
 $C_{\hat{\imath}}$ a inclusão de novos dados do sensor $R_{new}$
-levará para produzir a menor mudança em sua Dimensão Fractal.
+produzirá a menor mudança em sua Dimensão Fractal.
 % In the phase of sensor node clustering (Step 2), the Fractal Dimension is 
 % calculated and stored for each initial cluster
 % ($F_{d}(D(C_i)), \forall i$). The idea is to find out which cluster
@@ -770,12 +771,13 @@ levará para produzir a menor mudança em sua Dimensão Fractal.
 % the slightest change in its Fractal Dimension.
 \vspace*{-.3cm}
 
-A estratégia MDFDA é a seguinte: 
-sempre que o sink recebe ``novidades'', ou seja, os novos dados ($R_{nova}$),
-a partir de um CH em um {\it cluster} dado $C_j$, ele calcula que {\it cluster} $C_I$
-tem o mínimo \textit{impacto fractal} com a adição de novos dados, ou seja,
-o absoluto mínimo diferença entre o valor de dimensão fractal anterior
-(calculado antes recebe os novos dados) ($F_d(D(C_i))$) e um novo ($F_d(D'(C_i))$), where:
+A estratégia {\it MDFD} é a seguinte:
+sempre que o sink recebe ``novidades'', ou seja, novos dados ($R_{new}$), a
+partir de um CH em um dado {\it cluster} $C_j$, ele calcula qual {\it cluster}
+$C_I$ tem o mínimo \textit{impacto fractal} com a adição de novos dados, ou
+seja, a diferença mínima absoluta entre o valor de Dimensão Fractal anterior
+(calculado antes de receber os novos dados) ($F_d(D(C_i))$) e o novo valor
+($F_d(D'(C_i))$), onde:
  $D'(C_i) = D(C_i) \cup R_{new}, \forall i$.
 % MDFD strategy is as follows:
 % whenever the sink receives ``novelties'', i.e. new data ($R_{new}$), from a CH on
@@ -786,13 +788,13 @@ o absoluto mínimo diferença entre o valor de dimensão fractal anterior
 % $D'(C_i) = D(C_i) \cup R_{new}, \forall i$.
 \vspace*{-.3cm}
 
-Deixando {\it min}$\nabla$ a minima diferença ($|F_d(D'(C_{\hat{\imath}})) -
+Sendo {\it min}$\nabla$ a diferença minimal ($|F_d(D'(C_{\hat{\imath}})) -
 F_d(D(C_{\hat{\imath}}))|$, onde $\hat{\imath} = min(|F_d(D'(C_i)) -
-F_d(D(C_i))|), \forall i$). Se {\it min}$\nabla$ é maior do que 
-um limiar de separação ($\sigma$) (por exemplo, $\sigma = 0.1$) ou se
-o NoiseCount é maior do que um número máximo de ruído sequencial ($\mu$)
-(definido pelo perito aplicação - por exemplo, $\mu$ = 3),  em seguida, um
-processo de separação é acionado.
+F_d(D(C_i))|), \forall i$). Se {\it min}$\nabla$ é maior do que um limiar de
+divisão ($\sigma$) (por exemplo, $\sigma = 0.1$) ou se o valor da variável
+``NoiseCount'' é maior do que um número máximo de ruídos sequenciais ($\mu$),
+(definido pelo expert - por exemplo, $\mu$ = 3), então, um processo de
+divisão é acionado.
 % Let {\it min}$\nabla$ be the minimal difference ($|F_d(D'(C_{\hat{\imath}})) -
 % F_d(D(C_{\hat{\imath}}))|$, where $\hat{\imath} = min(|F_d(D'(C_i)) - F_d(D(C_i))|),
 % \forall i$). If {\it min}$\nabla$ is greater than a split threshold ($\sigma$)
@@ -801,22 +803,22 @@ processo de separação é acionado.
 % then a split process is triggered.
 \vspace*{-.3cm}
 
-Caso contrário, se {\it min} $\nabla$ é maior do que um certo limiar ($\tau$)
-- definido pelo perito aplicação (por exemplo, $\tau = 0,03$), então 
-esses novos dados $R_{nova}$ será simplesmente rejeitada como ruído e 
+Caso contrário, se {\it min}$\nabla$ é maior do que um certo limiar ($\tau$)
+- definido pelo expert (por exemplo, $\tau = 0,03$), então 
+esses novos dados $R_{new}$ serão simplesmente rejeitados como ruído e 
 um contador de ruído seqüencial (NoiseCount) é incrementado para o sensor
-de corrente.
+atual.
 % Otherwise, if {\it min}$\nabla$ is greater than a certain threshold ($\tau$) -
 % defined by the application expert (e.g. $\tau = 0.03$), then this new data
 % $R_{new}$ will simply be rejected as noise and a sequential noise counter
 % (NoiseCount) is incremented for the current sensor.
 \vspace*{-.3cm}
 
-Por outro lado, se o agrupamento escolhido $C_I$ é os mesmos $C_j$ (ou seja 
-$ i = j $), a pia vai apenas calcular os novos coeficientes ($a$ e $b$, equações 
-(\ref {coef-a}) e (\ref {coef-b})) para o sensor correspondente neste agrupamento. 
-Caso contrário, a pia deve remover este nó sensor ($S_{R}$ com novos dados 
-$R_{nova}$) de seu antigo {\it cluster} $C_j$ e adicioná-lo ao novo {\it cluster} $(C_I)$.
+Por outro lado, se o agrupamento escolhido $C_I$ é o mesmo $C_j$ (ou seja 
+$i = j$), o sink vai apenas calcular os novos coeficientes ($a$ e $b$, equações 
+(\ref{coef-a}) e (\ref{coef-b})) para o sensor correspondente neste agrupamento. 
+Caso contrário, o sink deve remover este nó sensor ($S_{R}$ com novos dados 
+$R_{new}$) de seu antigo {\it cluster} $C_j$ e adicioná-lo ao novo {\it cluster} $(C_I)$.
 O Algoritmo \ref{alg:MDFD} descreve essa estratégia.
 % On the other hand, if the chosen cluster $C_i$ is the same $C_j$ (i.e.
 % $i=j$), the sink will just calculate new coefficients ($a$ and $b$, equations
@@ -841,7 +843,7 @@ O Algoritmo \ref{alg:MDFD} descreve essa estratégia.
 %  threshold ($\tau$), split threshold ($\sigma$), maximum sequential noise
 %  ($\mu$)}
  \KwResult{processes Fractal Clustering}
-  Nó Sink recebe novos dados ($R_{nova}$) do sensor ($S_{R}$) do {\it cluster} $C_j$\;
+  Nó Sink recebe novos dados ($R_{new}$) do sensor ($S_{R}$) do {\it cluster} $C_j$\;
 %  Sink Node receives new data ($R_{new}$) from sensor ($S_{R}$) of cluster $C_j$\;
  \For{i = 1 \ldots K}{
 	  Compute $F_d(D(C_i))$\;
@@ -867,17 +869,17 @@ O Algoritmo \ref{alg:MDFD} descreve essa estratégia.
 \end{algorithm}
 
 
-\section{Empirical Evaluation}
+\section{Avaliação dos Resultados}
 \label{eval}
 
-Para o propósito de mostrar o potencial considerável de desta abordagem,
-simulações sobre dados reais foram realizados e os principais resultados 
+Para o propósito de mostrar o potencial considerável desta abordagem,
+simulações sobre dados reais foram realizadas e os principais resultados 
 obtidos até agora são apresentados e discutidos nesta seção.
 % For the purpose of showing the potential of this approach, simulations over real
 % data have been conducted and the main results achieved so far are presented and
 % discussed in this section.
 
-\subsection{Implementation}
+\subsection{Implementação}
 \label{implementation}
 
 O protótipo de simulação, que foi implementado em Java, exploraram os
