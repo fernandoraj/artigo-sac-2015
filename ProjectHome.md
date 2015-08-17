@@ -1,0 +1,1 @@
+Artigo enviado para o SAC 2015 em português.
